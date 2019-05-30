@@ -24,7 +24,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .RightBar {
-  width: 55px;
+  min-width: 55px;
   height: calc(100vh - 75px);
   background-color: white;
   border-left: 1px solid #f1f3f4;
