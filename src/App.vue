@@ -1,12 +1,34 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <TopBar @toggle-menu="menuIsOpened = !menuIsOpened"></TopBar>
+    <section>
+      <LeftBar @open-menu="menuIsOpened = true" @close-menu="menuIsOpened = false" :menuIsOpened="menuIsOpened"></LeftBar>
+      <router-view/>
+      <RightBar></RightBar>
+    </section>
   </div>
 </template>
+
+<script>
+// @ is an alias to /src
+import TopBar from '@/components/TopBar.vue'
+import LeftBar from '@/components/LeftBar.vue'
+import RightBar from '@/components/RightBar.vue'
+
+export default {
+  name: 'home',
+  components: {
+    TopBar,
+    LeftBar,
+    RightBar,
+  },
+  data() {
+    return {
+      menuIsOpened: false
+    }
+  },
+}
+</script>
 
 <style lang="scss">
 #app {
@@ -15,15 +37,13 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+  height: 100vh;
+  section {
+    display: flex;
+    justify-content: space-between;
   }
+}
+body {
+  margin: 0px;
 }
 </style>
