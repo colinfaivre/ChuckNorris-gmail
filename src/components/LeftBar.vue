@@ -6,21 +6,21 @@
       <span class="add-icon-text" v-show="menuIsOpened">Compose</span>
     </div>
 
-    <div :class="{'icon-container': true, 'icon-container-opened': menuIsOpened}">
+    <div @click="$router.push({ name: 'inbox'})" :class="{'icon-container': true, 'icon-container-opened': menuIsOpened}">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
         <path d="M19 3H4.99c-1.11 0-1.98.89-1.98 2L3 19c0 1.1.88 2 1.99 2H19c1.1 0 2-.9 2-2V5c0-1.11-.9-2-2-2zm0 12h-4c0 1.66-1.35 3-3 3s-3-1.34-3-3H4.99V5H19v10z" fill="#777"/>
         <path fill="none" d="M0 0h24v24H0V0z"/>
       </svg>
-      <span class="icon-text" v-show="menuIsOpened">Inbox</span>
+      <span class="icon-text" v-show="menuIsOpened">Inbox {{ totalEmailsInboxNumber || "" }}</span>
     </div>
   
-    <div :class="{'icon-container': true, 'icon-container-opened': menuIsOpened}">
+    <div @click="$router.push({ name: 'starred' })" :class="{'icon-container': true, 'icon-container-opened': menuIsOpened}">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
         <path d="M0 0h24v24H0z" fill="none"/>
         <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="#777"/>
         <path d="M0 0h24v24H0z" fill="none"/>
       </svg>
-      <span class="icon-text" v-show="menuIsOpened">Starred</span>
+      <span class="icon-text" v-show="menuIsOpened">Starred {{ totalStarredEmailsNumber || "" }}</span>
     </div>
   
     <div :class="{'icon-container': true, 'icon-container-opened': menuIsOpened}">
@@ -31,12 +31,12 @@
       <span class="icon-text" v-show="menuIsOpened">Sent</span>
     </div>
 
-    <div :class="{'icon-container': true, 'icon-container-opened': menuIsOpened}">
+    <div @click="$router.push({ name: 'trash'})" :class="{'icon-container': true, 'icon-container-opened': menuIsOpened}">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
         <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" fill="#777"/>
         <path d="M0 0h24v24H0z" fill="none"/>
       </svg>
-      <span class="icon-text" v-show="menuIsOpened">Trash</span>
+      <span class="icon-text" v-show="menuIsOpened">Trash {{ totalInTrashEmailsNumber || "" }}</span>
     </div>
     
   </div>
@@ -53,11 +53,20 @@ export default {
 
     }
   },
-
+  computed: {
+    totalEmailsInboxNumber() {
+      return this.$store.getters.totalEmailsInboxNumber
+    },
+    totalStarredEmailsNumber() {
+      return this.$store.getters.totalStarredEmailsNumber
+    },
+    totalInTrashEmailsNumber() {
+      return this.$store.getters.totalInTrashEmailsNumber
+    }
+  }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .LeftBar {
 
