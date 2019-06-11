@@ -9,6 +9,8 @@ export default new Vuex.Store({
       {
         id: 0,
         from: "Marine Carboni",
+        subject: "News from Limoges",
+        content: "Hi Jesus ...",
         starred: true,
         inTrash: false,
         unRead: true,
@@ -16,6 +18,8 @@ export default new Vuex.Store({
       {
         id: 1,
         from: "Astor Carboni",
+        subject: "News from CatLand",
+        content: "Hi Jesus ...",
         starred: false,
         inTrash: false,
         unRead: true,
@@ -23,6 +27,8 @@ export default new Vuex.Store({
       {
         id: 2,
         from: "Minette Faivre",
+        subject: "News from CatLand",
+        content: "Hi Jesus ...",
         starred: true,
         inTrash: false,
         unRead: true,
@@ -30,6 +36,8 @@ export default new Vuex.Store({
       {
         id: 3,
         from: "Didi Blackos",
+        subject: "News from CatLand",
+        content: "Hi Jesus ...",
         starred: false,
         inTrash: false,
         unRead: true,
