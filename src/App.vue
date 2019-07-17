@@ -14,6 +14,8 @@
 import TopBar from '@/components/TopBar.vue'
 import LeftBar from '@/components/LeftBar.vue'
 import RightBar from '@/components/RightBar.vue'
+import store from '@/store.js'
+import { setInterval } from 'timers';
 
 export default {
   name: 'home',
@@ -27,6 +29,11 @@ export default {
       menuIsOpened: false
     }
   },
+  mounted() {
+    // setInterval(() => {
+    //   store.commit('FEED_EMAILS')
+    // }, 5000)
+  }
 }
 </script>
 

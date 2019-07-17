@@ -5,44 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    emails: [
-      {
-        id: 0,
-        from: "Marine Carboni",
-        subject: "News from Limoges",
-        content: "Hi Jesus ...",
-        starred: true,
-        inTrash: false,
-        unRead: true,
-      },
-      {
-        id: 1,
-        from: "Astor Carboni",
-        subject: "News from CatLand",
-        content: "Hi Jesus ...",
-        starred: false,
-        inTrash: false,
-        unRead: true,
-      },
-      {
-        id: 2,
-        from: "Minette Faivre",
-        subject: "News from CatLand",
-        content: "Hi Jesus ...",
-        starred: true,
-        inTrash: false,
-        unRead: true,
-      },
-      {
-        id: 3,
-        from: "Didi Blackos",
-        subject: "News from CatLand",
-        content: "Hi Jesus ...",
-        starred: false,
-        inTrash: false,
-        unRead: true,
-      },
-    ]
+    emails: []
   },
   mutations: {
     TOGGLE_STAR(state, emailId) {
@@ -51,10 +14,34 @@ export default new Vuex.Store({
     TOGGLE_IN_TRASH(state, emailId) {
       state.emails[emailId].inTrash = !state.emails[emailId].inTrash
       state.emails[emailId].starred = false
+    },
+    FEED_EMAILS(state) {
+      let id
+      let emailObject
+      fetch('https://api.chucknorris.io/jokes/random')
+        .then(function (response) {
+          return response.json()
+        })
+        .then(function (myJson) {
+          id = state.emails.length
+          state.emails.push({
+            id: id,
+            from: "Chuck Norris",
+            subject: "Another Chuck Norris joke",
+            content: myJson.value,
+            starred: false,
+            inTrash: false,
+            unRead: true,
+          })
+        })
+      
+      // state.emails.push(emailObject)
     }
   },
   actions: {
-    
+    // getNewJoke(context) {
+    //   context.commit('FEED_EMAILS')
+    // }
   },
   getters: {
     totalEmailsNumber: state => {

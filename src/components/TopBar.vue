@@ -25,7 +25,7 @@
       </div>
 
       <div class="icon-container">
-        <img class="profile-image" alt="Profile Image" src="../assets/jesus-image2.png">
+        <img class="profile-image" alt="Profile Image" src="../assets/chuck-norris.jpg">
       </div>
     </div>
 
