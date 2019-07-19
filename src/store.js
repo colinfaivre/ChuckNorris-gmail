@@ -18,6 +18,7 @@ export default new Vuex.Store({
     FEED_EMAILS(state) {
       let id
       let emailObject
+      if (state.emails.length > 20) return
       fetch('https://api.chucknorris.io/jokes/random')
         .then(function (response) {
           return response.json()

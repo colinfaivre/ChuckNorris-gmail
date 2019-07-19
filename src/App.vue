@@ -30,9 +30,9 @@ export default {
     }
   },
   mounted() {
-    // setInterval(() => {
-    //   store.commit('FEED_EMAILS')
-    // }, 5000)
+    setInterval(() => {
+      store.commit('FEED_EMAILS')
+    }, 5000)
   }
 }
 </script>
